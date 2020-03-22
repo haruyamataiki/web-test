@@ -2,6 +2,12 @@
 	<%= form_for(@post) do |f| %>
 <h4>スレッド名</h4>
 	<%= f.text_field :title %>
+	<%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+		<%= category.label do %>
+    	<%= category.check_box %>
+    	<%= category.text %>
+        <% end %>
+	<% end %>
 	<%= f.submit 'スレッドを立てる' %>
 	<% end %>
 <h3>スレッド一覧</h3>
